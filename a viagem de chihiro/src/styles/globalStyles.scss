@@ -1,10 +1,10 @@
 :root {
-  --green: #628E75;
-  --white: #F9F9F9;
+  --green: #628e75;
+  --white: #f9f9f9;
   /* Gradient */
 
-  --light: #628E75;
-  --dark: #1A4855;
+  --light: #628e75;
+  --dark: #1a4855;
 }
 
 * {
@@ -50,4 +50,8 @@ a {
   }
 }
 
-
+@media (min-height: 650px){
+  body {
+    height: calc(100vh - 0.9rem);
+  }
+}
