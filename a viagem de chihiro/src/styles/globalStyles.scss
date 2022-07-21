@@ -50,7 +50,7 @@ a {
   }
 }
 
-@media (min-height: 650px){
+@media (min-height: 650px) and (max-width:600px){
   body {
     height: calc(100vh - 0.9rem);
   }
