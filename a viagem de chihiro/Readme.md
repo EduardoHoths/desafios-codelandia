@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/94751445/180307067-216c61c0-14e5-42c8-8ab9-ea97a42ae89f.png)
+
+
 # Sobre o projeto
 
 <p>
@@ -15,5 +18,5 @@
 ## Projeto
 
 <p>
-  <a href="">Clique aqui</a>para visualizar a aplicação
+  <a href="">Clique aqui</a> para visualizar a aplicação
 </p>
