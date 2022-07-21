@@ -1,0 +1,53 @@
+:root {
+  --green: #628E75;
+  --white: #F9F9F9;
+  /* Gradient */
+
+  --light: #628E75;
+  --dark: #1A4855;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, var(--light), var(--dark));
+  height: calc(100vh - 2.563rem);
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 100%;
+  }
+  body {
+    height: auto;
+  }
+}
+
+
