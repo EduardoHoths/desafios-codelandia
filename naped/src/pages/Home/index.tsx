@@ -80,8 +80,6 @@ export function Home() {
 
   if (!data) return null;
 
-  console.log(data);
-
   return (
     <>
       <Header page="home" />

@@ -11,6 +11,8 @@ createServer({
   routes() {
     this.namespace = "api";
 
+    this.urlPrefix = import.meta.env.API_URL 
+
     this.get("/home", () => {
       return {
         highlights: [
