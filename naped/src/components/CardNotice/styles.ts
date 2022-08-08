@@ -25,12 +25,14 @@ export const Container = styled.div`
     position: absolute;
     top: 1.125rem;
     left: 1.875rem;
+    z-index: 999;
   }
 
   img {
     width: ${({ width }: ContainerProps) => `${width}px`};
     height: ${({ height }: ContainerProps) => `${height}px`};
     object-fit: cover;
+    filter: brightness(0.6);
   }
 
   h2 {

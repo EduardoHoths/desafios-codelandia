@@ -3,6 +3,10 @@ import { CardNotice } from "../../components/CardNotice";
 import { FirstSection, Footer, Highlights, Main, NewsList, RecentNews } from "./styles";
 import { ContainerNotice } from "../../components/ContainerNotice";
 
+import { api } from "../../api/api";
+import { useEffect, useState } from "react";
+import { INews, INewsList } from "../../interface/types";
+
 const newsList = [
   {
     img: "https://source.unsplash.com/random",
@@ -60,7 +64,24 @@ const newsList = [
   },
 ];
 
+interface DataApi {
+  highlights: INews[];
+  news: INews[];
+  newsList: INewsList[];
+  recentNews: INews[];
+}
+
 export function Home() {
+  const [data, setData] = useState<DataApi>();
+
+  useEffect(() => {
+    api.get("/api/home").then((res) => setData(res.data));
+  }, []);
+
+  if (!data) return null;
+
+  console.log(data);
+
   return (
     <>
       <Header page="home" />
@@ -79,65 +100,57 @@ export function Home() {
         </FirstSection>
 
         <Highlights>
-          <CardNotice
-            width="761"
-            height="350"
-            img="https://source.unsplash.com/random"
-            category="Filme"
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-          />
+          {data.highlights.map((notice, index) => {
+            if (index === 0) {
+              return (
+                <CardNotice
+                  key={notice.id}
+                  width="761"
+                  height="350"
+                  img={notice.img}
+                  category={notice.category}
+                  title={notice.title}
+                />
+              );
+            }
+          })}
 
           <div>
-            <CardNotice
-              width="338"
-              height="165"
-              img="https://source.unsplash.com/random"
-              category="Anime"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-
-            <CardNotice
-              width="338"
-              height="165"
-              img="https://source.unsplash.com/random"
-              category="Série"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
+            {data.highlights.map((notice, index) => {
+              if (index > 0) {
+                return (
+                  <CardNotice
+                    key={notice.id}
+                    width="338"
+                    height="165"
+                    img={notice.img}
+                    category={notice.category}
+                    title={notice.title}
+                  />
+                );
+              }
+            })}
           </div>
         </Highlights>
 
         <NewsList>
           <ul>
-            {newsList.map((notice) => (
-              <ContainerNotice notice={notice} />
+            {data.newsList.map((notice) => (
+              <ContainerNotice notice={notice} key={notice.id} />
             ))}
           </ul>
 
           <aside>
             <h2>Novidades</h2>
 
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Anime"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Série"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Série"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
+            {data.news.map((notice) => (
+              <CardNotice
+                img={notice.img}
+                category={notice.category}
+                title={notice.title}
+                key={notice.id}
+              />
+            ))}
           </aside>
         </NewsList>
 
@@ -145,45 +158,14 @@ export function Home() {
           <h2>Notícias mais recentes</h2>
 
           <div>
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Anime"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Série"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Série"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Anime"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Série"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
-            <CardNotice
-              img="https://source.unsplash.com/random"
-              category="Série"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et
-            velit in, blandit molestie dolor."
-            />
+            {data.recentNews.map((notice) => (
+              <CardNotice
+                img={notice.img}
+                category={notice.category}
+                title={notice.title}
+                key={notice.id}
+              />
+            ))}
           </div>
         </RecentNews>
       </Main>

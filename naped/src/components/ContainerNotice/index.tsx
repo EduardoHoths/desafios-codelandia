@@ -1,13 +1,8 @@
+import { INewsList } from "../../interface/types";
 import { ImageContainer, Notice } from "./styles";
 
 interface ContainerNoticeProps {
-  notice: {
-    img: string;
-    title: string;
-    content: string;
-    date: string;
-    category: string;
-  };
+  notice: INewsList;
 }
 
 export function ContainerNotice({ notice }: ContainerNoticeProps) {
