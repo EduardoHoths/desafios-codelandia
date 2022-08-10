@@ -393,7 +393,7 @@ createServer({
         ],
       };
     });
-    this.get("/notice/:category/:id", (schema, request) => {
+    this.get("/notice/:category/:id", (schema: any, request: any) => {
       const id = request.params.id;
       const category = request.params.category;
 
