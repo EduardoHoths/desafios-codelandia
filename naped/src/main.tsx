@@ -34,11 +34,7 @@ createServer({
               content:
                 "Revelado durante a EVO 2019 e posteriormente na celebração dos dez anos de League of Legends, o Project L está cada vez mais próximo de receber uma data para testes. O jogo de luta 2D desenvolvido pela Riot Games será baseado no universo de Runeterra, o mesmo do MOBA de sucesso. Desde então, diversas informações sobre o desenvolvimento chegaram ao público. Confira aqui no ge tudo o que se sabe sobre o andamento de Project L.",
             },
-            {
-              type: "img",
-              content:
-                "https://s2.glbimg.com/_cXBJBCedaCk5Tsv_dWbun7MSlI=/0x0:1200x675/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/7/1/pOCXs1RyapL2c0TluOuw/project-l-thumb.jpg",
-            },
+
             {
               type: "h2",
               content: "Como será o Project L e quando virá?",
