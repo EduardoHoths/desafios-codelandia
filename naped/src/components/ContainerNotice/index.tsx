@@ -1,11 +1,14 @@
 import { INewsList } from "../../interface/types";
 import { ImageContainer, Notice } from "./styles";
+import { format } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 interface ContainerNoticeProps {
   notice: INewsList;
 }
 
 export function ContainerNotice({ notice }: ContainerNoticeProps) {
+  console.log(notice)
   return (
     <Notice>
       <ImageContainer>
@@ -17,7 +20,9 @@ export function ContainerNotice({ notice }: ContainerNoticeProps) {
         <h3>{notice.title}</h3>
         <span>{notice.content}</span>
 
-        <data value={notice.date}>{notice.date}</data>
+        <data value={notice.date}>
+          {format(new Date(notice.date), "dd/MM/yyyy", { locale: ptBR })}
+        </data>
 
         <a href="">Ler notícia</a>
       </div>

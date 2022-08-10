@@ -54,6 +54,7 @@ export const ImageContainer = styled.div`
   width: 200px;
   height: 151px;
   position: relative;
+  
 
   span {
     position: absolute;
@@ -65,11 +66,13 @@ export const ImageContainer = styled.div`
     padding: 1px 1rem;
     border-radius: 3px;
     font-size: 0.75rem;
+    z-index: 1;
   }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.8);
   }
 `;

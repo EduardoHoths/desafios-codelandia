@@ -8,17 +8,18 @@ interface ContainerProps {
 export const Container = styled.div`
   position: relative;
   border: 1px solid transparent;
-  height: ${({height})=> `${parseInt(height) + 2}px` };
+  height: ${({ height }) => `${parseInt(height) + 2}px`};
   transition: 0.2s;
 
-  &:hover{
+  &:hover {
     border: 1px solid var(--purple-light);
   }
 
   span {
     font-family: "Lexend Deca";
-    font-size:${({ width }: ContainerProps) => (width > "338" ? "0.875rem" : "0.75rem")}  ;
-    padding: ${({ width }: ContainerProps) => (width > "338" ? "0.25rem 1.125rem" : "0.188rem 1rem")} ;
+    font-size: ${({ width }: ContainerProps) => (width > "338" ? "0.875rem" : "0.75rem")};
+    padding: ${({ width }: ContainerProps) =>
+      width > "338" ? "0.25rem 1.125rem" : "0.188rem 1rem"};
     background-color: var(--purple-light);
     border-radius: 3px;
     color: var(--white);
@@ -39,8 +40,15 @@ export const Container = styled.div`
     position: absolute;
     bottom: 0.938rem;
     left: 1.875rem;
-    max-width: 701px;
+    max-width: ${({ width }: ContainerProps) => (width > "338" ? "701px" : "290px")};
     font-size: ${({ width }: ContainerProps) => (width > "338" ? "1.5rem" : "0.813rem")};
     line-height: ${({ width }: ContainerProps) => (width > "338" ? "34px" : "20px")};
   }
+
+  @media (max-width: 1200px) {
+    img{
+      width: 100%;
+    }
+  }
+  
 `;

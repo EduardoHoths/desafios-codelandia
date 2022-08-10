@@ -87,7 +87,7 @@ export function Home() {
       <Main>
         <FirstSection>
           <h1>
-            Mundo nerd? <br />
+            Mundo nerd? 
             Naped!
           </h1>
 
