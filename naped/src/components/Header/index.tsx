@@ -8,7 +8,7 @@ import menuIcon from "../../assets/menu.svg";
 import { X } from "phosphor-react";
 
 interface HeaderProps {
-  page: string;
+  page?: string;
 }
 
 export function Header({ page }: HeaderProps) {

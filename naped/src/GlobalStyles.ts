@@ -56,5 +56,15 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
   }
 
+  main{
+    max-width: 1120px;
+  margin: 0 auto;
+  margin-top: 7.125rem;
+  padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
+  }
   
 `;

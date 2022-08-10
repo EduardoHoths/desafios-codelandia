@@ -8,7 +8,23 @@ interface ContainerNoticeProps {
 }
 
 export function ContainerNotice({ notice }: ContainerNoticeProps) {
-  console.log(notice)
+  let categoryFormated = "";
+
+  switch (notice.category) {
+    case "Filme":
+      categoryFormated = "movies";
+      break;
+    case "Anime":
+      categoryFormated = "animes";
+      break;
+    case "Game":
+      categoryFormated = "games";
+      break;
+    case "Série":
+      categoryFormated = "series";
+      break;
+  }
+
   return (
     <Notice>
       <ImageContainer>
@@ -24,7 +40,7 @@ export function ContainerNotice({ notice }: ContainerNoticeProps) {
           {format(new Date(notice.date), "dd/MM/yyyy", { locale: ptBR })}
         </data>
 
-        <a href="">Ler notícia</a>
+        <a href={`/notice/${categoryFormated}/${notice.id}`}>Ler notícia</a>
       </div>
     </Notice>
   );

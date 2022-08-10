@@ -5,11 +5,12 @@ interface ContainerProps {
   height: string;
 }
 
-export const Container = styled.div`
+export const Container = styled.a`
   position: relative;
   border: 1px solid transparent;
   height: ${({ height }) => `${parseInt(height) + 2}px`};
   transition: 0.2s;
+  display: block;
 
   &:hover {
     border: 1px solid var(--purple-light);

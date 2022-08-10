@@ -1,68 +1,12 @@
 import { Header } from "../../components/Header";
 import { CardNotice } from "../../components/CardNotice";
-import { FirstSection, Footer, Highlights, Main, NewsList, RecentNews } from "./styles";
+import { FirstSection, Highlights, NewsList, RecentNews } from "./styles";
 import { ContainerNotice } from "../../components/ContainerNotice";
 
 import { api } from "../../api/api";
 import { useEffect, useState } from "react";
 import { INews, INewsList } from "../../interface/types";
-
-const newsList = [
-  {
-    img: "https://source.unsplash.com/random",
-    title:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor...",
-    date: "00/00/0000",
-    category: "Filme",
-  },
-  {
-    img: "https://source.unsplash.com/random",
-    title:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor...",
-    date: "00/00/0000",
-    category: "Filme",
-  },
-  {
-    img: "https://source.unsplash.com/random",
-    title:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor...",
-    date: "00/00/0000",
-    category: "Filme",
-  },
-  {
-    img: "https://source.unsplash.com/random",
-    title:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor...",
-    date: "00/00/0000",
-    category: "Filme",
-  },
-  {
-    img: "https://source.unsplash.com/random",
-    title:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor...",
-    date: "00/00/0000",
-    category: "Filme",
-  },
-  {
-    img: "https://source.unsplash.com/random",
-    title:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor...",
-    date: "00/00/0000",
-    category: "Filme",
-  },
-];
+import { Footer } from "../../components/Footer";
 
 interface DataApi {
   highlights: INews[];
@@ -76,6 +20,8 @@ export function Home() {
 
   useEffect(() => {
     api.get("/api/home").then((res) => setData(res.data));
+
+    api.get("/api/notice/games/1").then((res) => console.log(res));
   }, []);
 
   if (!data) return null;
@@ -84,12 +30,9 @@ export function Home() {
     <>
       <Header page="home" />
 
-      <Main>
+      <main>
         <FirstSection>
-          <h1>
-            Mundo nerd? 
-            Naped!
-          </h1>
+          <h1>Mundo nerd? Naped!</h1>
 
           <span>
             O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos
@@ -102,12 +45,13 @@ export function Home() {
             if (index === 0) {
               return (
                 <CardNotice
-                  key={notice.id}
+                  key={notice.title}
                   width="761"
                   height="350"
                   img={notice.img}
                   category={notice.category}
                   title={notice.title}
+                  id={notice.id}
                 />
               );
             }
@@ -118,12 +62,13 @@ export function Home() {
               if (index > 0) {
                 return (
                   <CardNotice
-                    key={notice.id}
+                    key={notice.title}
                     width="338"
                     height="165"
                     img={notice.img}
                     category={notice.category}
                     title={notice.title}
+                    id={notice.id}
                   />
                 );
               }
@@ -134,7 +79,7 @@ export function Home() {
         <NewsList>
           <ul>
             {data.newsList.map((notice) => (
-              <ContainerNotice notice={notice} key={notice.id} />
+              <ContainerNotice notice={notice} key={notice.title} />
             ))}
           </ul>
 
@@ -146,7 +91,8 @@ export function Home() {
                 img={notice.img}
                 category={notice.category}
                 title={notice.title}
-                key={notice.id}
+                key={notice.title}
+                id={notice.id}
               />
             ))}
           </aside>
@@ -161,21 +107,15 @@ export function Home() {
                 img={notice.img}
                 category={notice.category}
                 title={notice.title}
-                key={notice.id}
+                key={notice.title}
+                id={notice.id}
               />
             ))}
           </div>
         </RecentNews>
-      </Main>
+      </main>
 
-      <Footer>
-        <span>Naped</span>
-
-        <p>
-          Todas as imagens de filmes, séries e etc são marcas registradas dos seus respectivos
-          proprietários.
-        </p>
-      </Footer>
+      <Footer />
     </>
   );
 }
