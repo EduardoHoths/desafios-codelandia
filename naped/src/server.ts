@@ -1,6 +1,5 @@
 import { createServer, Model, Server } from "miragejs";
 
-
 export default createServer({
   models: {
     series: Model,
@@ -796,19 +795,23 @@ export default createServer({
           content: [
             {
               type: "paragraph",
-              content: "Arremessando Alto, novo filme de Adam Sandler para a Netflix, quebrou uma tradição conhecida dos projetos do astro com a produtora Happy Madison: sua esposa, Jackie, não aparece em momento algum do filme.",
+              content:
+                "Arremessando Alto, novo filme de Adam Sandler para a Netflix, quebrou uma tradição conhecida dos projetos do astro com a produtora Happy Madison: sua esposa, Jackie, não aparece em momento algum do filme.",
             },
             {
               type: "paragraph",
-              content: "Sandler e Jackie se conheceram no filme O Paizão, de 1999, e se casaram em 2003. Adam Sandler tem, desde então, o costume de sempre incluir ao menos um membro de sua família na maioria de seus filmes, sendo Jackie a convidada mais frequente.",
+              content:
+                "Sandler e Jackie se conheceram no filme O Paizão, de 1999, e se casaram em 2003. Adam Sandler tem, desde então, o costume de sempre incluir ao menos um membro de sua família na maioria de seus filmes, sendo Jackie a convidada mais frequente.",
             },
             {
               type: "paragraph",
-              content: "No entanto, Arremessando Alto rompe com essa prática tradicional da família Sandler.Não houve alguma explicação oficial para a ausência de Jackie no novo filme, mas o site Screen Rant acredita que possa estar relacionado ao gênero do filme, já que o forte da Happy Madison é a comédia, e Arremessando Alto é um drama.",
+              content:
+                "No entanto, Arremessando Alto rompe com essa prática tradicional da família Sandler.Não houve alguma explicação oficial para a ausência de Jackie no novo filme, mas o site Screen Rant acredita que possa estar relacionado ao gênero do filme, já que o forte da Happy Madison é a comédia, e Arremessando Alto é um drama.",
             },
             {
               type: "paragraph",
-              content: "Em comparação, outros filmes de drama do ator também não contaram com aparições de sua família.",
+              content:
+                "Em comparação, outros filmes de drama do ator também não contaram com aparições de sua família.",
             },
             {
               type: "h2",
@@ -816,19 +819,23 @@ export default createServer({
             },
             {
               type: "paragraph",
-              content: "Adam Sandler retorna em mais um projeto para a Netflix, agora vivendo Stanley Sugerman, um olheiro de basquete, que tem sua mão machucada ao longo do filme.",
+              content:
+                "Adam Sandler retorna em mais um projeto para a Netflix, agora vivendo Stanley Sugerman, um olheiro de basquete, que tem sua mão machucada ao longo do filme.",
             },
             {
               type: "paragraph",
-              content: "'Um olheiro de basquete azarado encontra um jogador com potencial de sucesso e se esforça para provar que ambos merecem chegar à NBA', revela a sinopse.",
+              content:
+                "'Um olheiro de basquete azarado encontra um jogador com potencial de sucesso e se esforça para provar que ambos merecem chegar à NBA', revela a sinopse.",
             },
             {
               type: "paragraph",
-              content: "Dirigido por Jeremiah Zagar, com roteiro de Taylor Materne e Will Fetters, o elenco ainda conta com estrelas como Ben Foster, Robert Duvall e Queen Latifah. Jogadores da NBA como Boban Marjanovi, Trae Young, Jordan Clarkson, Khris Middleton, Aaron Gordon, Kyle Lowry, Seth Curry, Tobias Harris, Tyrese Maxey, e Matisse Thybulle - além de LeBron James também aparecem.",
+              content:
+                "Dirigido por Jeremiah Zagar, com roteiro de Taylor Materne e Will Fetters, o elenco ainda conta com estrelas como Ben Foster, Robert Duvall e Queen Latifah. Jogadores da NBA como Boban Marjanovi, Trae Young, Jordan Clarkson, Khris Middleton, Aaron Gordon, Kyle Lowry, Seth Curry, Tobias Harris, Tyrese Maxey, e Matisse Thybulle - além de LeBron James também aparecem.",
             },
             {
               type: "link",
-              content: "https://www.uai.com.br/app/noticia/cinema/2022/06/20/noticias-cinema,288466/arremessando-alto-quebra-grande-tradicao-dos-filmes-de-adam-sandler.shtml",
+              content:
+                "https://www.uai.com.br/app/noticia/cinema/2022/06/20/noticias-cinema,288466/arremessando-alto-quebra-grande-tradicao-dos-filmes-de-adam-sandler.shtml",
             },
           ],
         },
@@ -1178,5 +1185,9 @@ export default createServer({
 
       return data.attrs;
     });
+    this.get("/animes", () => {
+      return this.schema.all("animes");
+    });
+   
   },
 });

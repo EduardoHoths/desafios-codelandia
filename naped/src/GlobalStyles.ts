@@ -45,10 +45,25 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
   }
 
+  input{
+    background-color: var(--gray-200);
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+    border: none;
+    outline: none;
+    font-size: 1.25rem;
+
+    ::placeholder{
+      color: #989898;
+      font-size: 1.25rem;
+    }
+  }
   button{
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     color: var(--white);
+    background-color: transparent;
+    border: 0;
   }
 
   a{

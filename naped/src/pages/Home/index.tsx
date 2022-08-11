@@ -24,7 +24,7 @@ export function Home() {
     api.get("/api/notice/games/1").then((res) => console.log(res));
   }, []);
 
-  if (!data) return null;
+  if (!data) return <Header page="home"/>;
 
   return (
     <>

@@ -7,9 +7,10 @@ interface NewsProps {
   category: string;
   title: string;
   id: number;
+  withCategory?: boolean;
 }
 
-export function CardNotice({ img, width = "338", height = "250", category, title, id }: NewsProps) {
+export function CardNotice({ img, width = "338", height = "250", category, title, id, withCategory = true }: NewsProps) {
   let categoryFormated = "";
 
   switch (category) {
@@ -28,7 +29,7 @@ export function CardNotice({ img, width = "338", height = "250", category, title
   }
   return (
     <Container width={width} height={height} href={`/notice/${categoryFormated}/${id}`}>
-      <span>{category}</span>
+      {withCategory && <span>{category}</span>}
 
       <img src={img} />
 
