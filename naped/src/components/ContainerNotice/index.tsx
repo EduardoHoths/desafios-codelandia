@@ -36,9 +36,9 @@ export function ContainerNotice({ notice }: ContainerNoticeProps) {
         <h3>{notice.title}</h3>
         <span>{notice.content}</span>
 
-        <data value={notice.date}>
+        <time dateTime={notice.date}>
           {format(new Date(notice.date), "dd/MM/yyyy", { locale: ptBR })}
-        </data>
+        </time>
 
         <a href={`/notice/${categoryFormated}/${notice.id}`}>Ler notícia</a>
       </div>

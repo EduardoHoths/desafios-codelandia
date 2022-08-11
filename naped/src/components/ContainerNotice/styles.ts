@@ -26,7 +26,7 @@ export const Notice = styled.li`
       -webkit-box-orient: vertical;
     }
 
-    data {
+    time {
       font-size: 0.625rem;
       color: var(--white);
     }

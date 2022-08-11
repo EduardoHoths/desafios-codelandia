@@ -25,7 +25,8 @@ export const Main = styled.main`
   }
   > img {
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    max-height: 600px;
     margin-top: 2.688rem;
   }
   > h2 {

@@ -50,13 +50,13 @@ export function Notice() {
       <Main>
         <h1>{dataNotice.title}</h1>
 
-        <span>{dataNotice.subTitle}</span>
+        {dataNotice.subTitle !== "" && <span>{dataNotice.subTitle}</span>}
 
         <time dateTime={dataNotice.date}>{format(new Date(dataNotice.date), "dd/MM/yyyy")}</time>
 
         <FrontCover>
           <span>{dataNotice.category}</span>
-          <img src={dataNotice.frontCover} />
+          <img src={dataNotice.frontCover}/>
         </FrontCover>
 
         {dataNotice.content.map((content) => {
@@ -76,22 +76,24 @@ export function Notice() {
           }
         })}
 
-        <RecentNews>
-          <h2>Notícias mais recentes</h2>
+        {dataRecentNews && (
+          <RecentNews>
+            <h2>Notícias mais recentes</h2>
 
-          <div>
-            {dataRecentNews &&
-              dataRecentNews.map((notice) => (
-                <CardNotice
-                  img={notice.img}
-                  category={notice.category}
-                  title={notice.title}
-                  key={notice.title}
-                  id={notice.id}
-                />
-              ))}
-          </div>
-        </RecentNews>
+            <div>
+              {dataRecentNews &&
+                dataRecentNews.map((notice) => (
+                  <CardNotice
+                    img={notice.img}
+                    category={notice.category}
+                    title={notice.title}
+                    key={notice.title}
+                    id={notice.id}
+                  />
+                ))}
+            </div>
+          </RecentNews>
+        )}
       </Main>
 
       <Footer />
