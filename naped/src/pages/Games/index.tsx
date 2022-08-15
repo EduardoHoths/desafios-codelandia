@@ -7,37 +7,37 @@ import { Header } from "../../components/Header";
 import { INotice } from "../../interface/types";
 import { FirstSection, NoticesGrid, SearchBar } from "../stylesPages";
 
-import imageCover from "../../assets/anime.jpg";
+import imageCover from "../../assets/game.jpg";
 
-export function Animes() {
-  const [dataAnimes, setDataAnimes] = useState<INotice[]>();
-  const [filteredDataAnimes, setFilteredDataAnimes] = useState<INotice[]>([]);
-  const [searchAnime, setSearchAnime] = useState("");
+export function Games() {
+  const [dataGames, setDataGames] = useState<INotice[]>();
+  const [filteredDataGames, setFilteredDataGames] = useState<INotice[]>([]);
+  const [searchGame, setSearchGame] = useState("");
   const [titlesNotices, setTitlesNotices] = useState<string[]>();
 
   useEffect(() => {
-    api.get("/api/animes").then((res) => {
+    api.get("/api/games").then((res) => {
       const titles: string[] = [];
-      const data: INotice[] = res.data.animes;
+      const data: INotice[] = res.data.games;
 
       data.forEach((notice) => {
         titles.push(notice.title);
       });
 
-      setDataAnimes(data);
+      setDataGames(data);
       setTitlesNotices(titles);
     });
   }, []);
 
   function handleChange(event: FormEvent<HTMLInputElement>) {
-    setSearchAnime(event.currentTarget.value);
+    setSearchGame(event.currentTarget.value);
 
-    if (!dataAnimes || !titlesNotices) {
+    if (!dataGames || !titlesNotices) {
       return;
     }
-    console.log(searchAnime);
+    console.log(searchGame);
     if (event.currentTarget.value === "") {
-      setFilteredDataAnimes([]);
+      setFilteredDataGames([]);
       return;
     }
 
@@ -47,13 +47,13 @@ export function Animes() {
       title.toLocaleLowerCase().includes(lowerCaseSearch)
     );
 
-    const newDataAnimes: INotice[] = [];
+    const newDataGames: INotice[] = [];
 
     filteredTitle.forEach((title) => {
-      newDataAnimes.push(dataAnimes?.filter((notice) => notice.title === title)[0]);
+      newDataGames.push(dataGames?.filter((notice) => notice.title === title)[0]);
     });
 
-    setFilteredDataAnimes(newDataAnimes);
+    setFilteredDataGames(newDataGames);
   }
 
   function handleSubmit(event: FormEvent) {
@@ -62,11 +62,11 @@ export function Animes() {
 
   return (
     <>
-      <Header page="animes" />
+      <Header page="games" />
 
       <main>
         <FirstSection url={imageCover}>
-          <h1>Animes</h1>
+          <h1>Games</h1>
           <span>
             O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos
             relacionados.
@@ -78,7 +78,7 @@ export function Animes() {
             <input
               type="text"
               placeholder="Quer ajuda na procura? Pesquise aqui"
-              value={searchAnime}
+              value={searchGame}
               onChange={handleChange}
             />
             <button>
@@ -88,8 +88,8 @@ export function Animes() {
         </SearchBar>
 
         <NoticesGrid>
-          {filteredDataAnimes.length > 0 ? (
-            filteredDataAnimes.map((notice) => (
+          {filteredDataGames.length > 0 ? (
+            filteredDataGames.map((notice) => (
               <li key={notice.id}>
                 <CardNotice
                   key={notice.id}
@@ -101,11 +101,11 @@ export function Animes() {
                 />
               </li>
             ))
-          ) : searchAnime && filteredDataAnimes.length === 0 ? (
+          ) : searchGame && filteredDataGames.length === 0 ? (
             <h2>Notícia não encontrada</h2>
           ) : (
-            dataAnimes &&
-            dataAnimes.map((notice) => (
+            dataGames &&
+            dataGames.map((notice) => (
               <li key={notice.id}>
                 <CardNotice
                   key={notice.id}

@@ -17,14 +17,9 @@ interface DataApi {
 
 export function Home() {
   const [data, setData] = useState<DataApi>();
-
   useEffect(() => {
     api.get("/api/home").then((res) => setData(res.data));
-
-    api.get("/api/notice/games/1").then((res) => console.log(res));
   }, []);
-
-  if (!data) return <Header page="home"/>;
 
   return (
     <>
@@ -41,7 +36,7 @@ export function Home() {
         </FirstSection>
 
         <Highlights>
-          {data.highlights.map((notice, index) => {
+          {data && data.highlights.map((notice, index) => {
             if (index === 0) {
               return (
                 <CardNotice
@@ -58,7 +53,7 @@ export function Home() {
           })}
 
           <div>
-            {data.highlights.map((notice, index) => {
+            {data && data.highlights.map((notice, index) => {
               if (index > 0) {
                 return (
                   <CardNotice
@@ -78,7 +73,7 @@ export function Home() {
 
         <NewsList>
           <ul>
-            {data.newsList.map((notice) => (
+            {data && data.newsList.map((notice) => (
               <ContainerNotice notice={notice} key={notice.title} />
             ))}
           </ul>
@@ -86,7 +81,7 @@ export function Home() {
           <aside>
             <h2>Novidades</h2>
 
-            {data.news.map((notice) => (
+            {data && data.news.map((notice) => (
               <CardNotice
                 img={notice.img}
                 category={notice.category}
@@ -102,7 +97,7 @@ export function Home() {
           <h2>Notícias mais recentes</h2>
 
           <div>
-            {data.recentNews.map((notice) => (
+            {data && data.recentNews.map((notice) => (
               <CardNotice
                 img={notice.img}
                 category={notice.category}

@@ -7,37 +7,37 @@ import { Header } from "../../components/Header";
 import { INotice } from "../../interface/types";
 import { FirstSection, NoticesGrid, SearchBar } from "../stylesPages";
 
-import imageCover from "../../assets/anime.jpg";
+import imageCover from "../../assets/movie.jpg";
 
-export function Animes() {
-  const [dataAnimes, setDataAnimes] = useState<INotice[]>();
-  const [filteredDataAnimes, setFilteredDataAnimes] = useState<INotice[]>([]);
-  const [searchAnime, setSearchAnime] = useState("");
+export function Movies() {
+  const [dataMovies, setDataMovies] = useState<INotice[]>();
+  const [filteredDataMovies, setFilteredDataMovies] = useState<INotice[]>([]);
+  const [searchMovie, setSearchMovie] = useState("");
   const [titlesNotices, setTitlesNotices] = useState<string[]>();
 
   useEffect(() => {
-    api.get("/api/animes").then((res) => {
+    api.get("/api/movies").then((res) => {
       const titles: string[] = [];
-      const data: INotice[] = res.data.animes;
+      const data: INotice[] = res.data.movies;
 
       data.forEach((notice) => {
         titles.push(notice.title);
       });
 
-      setDataAnimes(data);
+      setDataMovies(data);
       setTitlesNotices(titles);
     });
   }, []);
 
   function handleChange(event: FormEvent<HTMLInputElement>) {
-    setSearchAnime(event.currentTarget.value);
+    setSearchMovie(event.currentTarget.value);
 
-    if (!dataAnimes || !titlesNotices) {
+    if (!dataMovies || !titlesNotices) {
       return;
     }
-    console.log(searchAnime);
+    console.log(searchMovie);
     if (event.currentTarget.value === "") {
-      setFilteredDataAnimes([]);
+      setFilteredDataMovies([]);
       return;
     }
 
@@ -47,13 +47,13 @@ export function Animes() {
       title.toLocaleLowerCase().includes(lowerCaseSearch)
     );
 
-    const newDataAnimes: INotice[] = [];
+    const newDataMovies: INotice[] = [];
 
     filteredTitle.forEach((title) => {
-      newDataAnimes.push(dataAnimes?.filter((notice) => notice.title === title)[0]);
+      newDataMovies.push(dataMovies?.filter((notice) => notice.title === title)[0]);
     });
 
-    setFilteredDataAnimes(newDataAnimes);
+    setFilteredDataMovies(newDataMovies);
   }
 
   function handleSubmit(event: FormEvent) {
@@ -62,11 +62,11 @@ export function Animes() {
 
   return (
     <>
-      <Header page="animes" />
+      <Header page="movies" />
 
       <main>
         <FirstSection url={imageCover}>
-          <h1>Animes</h1>
+          <h1>Filmes</h1>
           <span>
             O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos
             relacionados.
@@ -78,7 +78,7 @@ export function Animes() {
             <input
               type="text"
               placeholder="Quer ajuda na procura? Pesquise aqui"
-              value={searchAnime}
+              value={searchMovie}
               onChange={handleChange}
             />
             <button>
@@ -88,8 +88,8 @@ export function Animes() {
         </SearchBar>
 
         <NoticesGrid>
-          {filteredDataAnimes.length > 0 ? (
-            filteredDataAnimes.map((notice) => (
+          {filteredDataMovies.length > 0 ? (
+            filteredDataMovies.map((notice) => (
               <li key={notice.id}>
                 <CardNotice
                   key={notice.id}
@@ -101,11 +101,11 @@ export function Animes() {
                 />
               </li>
             ))
-          ) : searchAnime && filteredDataAnimes.length === 0 ? (
+          ) : searchMovie && filteredDataMovies.length === 0 ? (
             <h2>Notícia não encontrada</h2>
           ) : (
-            dataAnimes &&
-            dataAnimes.map((notice) => (
+            dataMovies &&
+            dataMovies.map((notice) => (
               <li key={notice.id}>
                 <CardNotice
                   key={notice.id}

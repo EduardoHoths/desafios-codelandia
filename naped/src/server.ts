@@ -1188,6 +1188,14 @@ export default createServer({
     this.get("/animes", () => {
       return this.schema.all("animes");
     });
-   
+    this.get("/series", () => {
+      return this.schema.all("series");
+    });
+    this.get("/movies", () => {
+      return this.schema.all("movies");
+    });
+    this.get("/games", () => {
+      return this.schema.all("games");
+    });
   },
 });
