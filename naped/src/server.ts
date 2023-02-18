@@ -847,7 +847,7 @@ export default createServer({
           subTitle:
             "Apesar de ter previsões de estreia apenas para o ano que vem, sem nenhuma data definida, Demon Slayer já está lançando esboços do anime.",
           category: "Anime",
-          frontCover: "https://www.nerdsite.com.br/wp-content/uploads/2022/06/demon-slayer.jpg",
+          frontCover: "https://uploads.jovemnerd.com.br/wp-content/uploads/2023/02/demon_slayer_kimetsu_no_yaiba_to_the_swordsmith_village_brasil__2sy5z2qg-1210x544.jpg",
           date: new Date("2022/06/06"),
           content: [
             {
