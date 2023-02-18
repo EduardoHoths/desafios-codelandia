@@ -1031,7 +1031,7 @@ export default createServer({
             id: 1,
             title: "Demon Slayer libera nova imagem do vilão da terceira temporada",
             category: "Anime",
-            img: "https://www.nerdsite.com.br/wp-content/uploads/2022/06/demon-slayer.jpg",
+            img: "https://uploads.jovemnerd.com.br/wp-content/uploads/2023/02/demon_slayer_kimetsu_no_yaiba_to_the_swordsmith_village_brasil__2sy5z2qg-1210x544.jpg",
           },
           {
             id: 1,
